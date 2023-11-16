@@ -16,4 +16,4 @@ git clone https://github.com/ngdnhtien/PulsatingPulseShop.git
 
 ## Acknowledgement
 
-We acknowledge the support and encouragement from coffee shops all around Hanoi for letting us cook in their place.
+We thank coffee shops all around Hanoi for letting us cook in their place.
