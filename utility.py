@@ -169,24 +169,24 @@ class DataAnalysis:
         """"""
         # zero data plotted in blue
         plt.scatter(np.real(zero_data), np.imag(zero_data), 
-                        s=5, cmap='viridis', c='blue', alpha=0.5, label=r'$|0\rangle$')
+                        s=5, c='blue', alpha=0.5, label=r'$|0\rangle$')
         # one data plotted in red
         plt.scatter(np.real(one_data), np.imag(one_data), 
-                        s=5, cmap='viridis', c='red', alpha=0.5, label=r'$|1\rangle$')
+                        s=5, c='red', alpha=0.5, label=r'$|1\rangle$')
         # two data plotted in green
         plt.scatter(np.real(two_data), np.imag(two_data), 
-                        s=5, cmap='viridis', c='green', alpha=0.5, label=r'$|2\rangle$')
+                        s=5, c='green', alpha=0.5, label=r'$|2\rangle$')
 
         # Plot a large dot for the average result of the 0, 1 and 2 states.
         mean_zero = np.mean(zero_data) # takes mean of both real and imaginary parts
         mean_one = np.mean(one_data)
         mean_two = np.mean(two_data)
         plt.scatter(np.real(mean_zero), np.imag(mean_zero), 
-                    s=200, cmap='viridis', c='black',alpha=1.0)
+                    s=200, c='black',alpha=1.0)
         plt.scatter(np.real(mean_one), np.imag(mean_one), 
-                    s=200, cmap='viridis', c='black',alpha=1.0)
+                    s=200, c='black',alpha=1.0)
         plt.scatter(np.real(mean_two), np.imag(mean_two), 
-                    s=200, cmap='viridis', c='black',alpha=1.0)
+                    s=200, c='black',alpha=1.0)
         
         plt.xlim(x_min, x_max)
         plt.ylim(y_min,y_max)
@@ -194,7 +194,6 @@ class DataAnalysis:
         plt.ylabel('I [a.u.]', fontsize=15)
         plt.xlabel('Q [a.u.]', fontsize=15)
         plt.title("0-1-2 discrimination", fontsize=15)
-        plt.savefig('output/iq_plane_plot.svg')
         
     def average_counter(counts, shots):
         all_exp = []
