@@ -21,6 +21,8 @@ pi_beta_12 = 2.0
 ## Control pulses
 
 pi_amp_12 = 0.2234824425369455
+pi_amp_12_D = 0.2230049547984586
 pi_dur_12 = 96
 pi_sigma_12 = 24
 pi_beta_12 = -0.5
+pulse_detuning = -0.072*MHz

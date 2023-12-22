@@ -169,13 +169,13 @@ class DataAnalysis:
         """"""
         # zero data plotted in blue
         plt.scatter(np.real(zero_data), np.imag(zero_data), 
-                        s=5, c='blue', alpha=0.5, label=r'$|0\rangle$')
+                        s=0.5, c='blue', alpha=0.5, label=r'$|0\rangle$')
         # one data plotted in red
         plt.scatter(np.real(one_data), np.imag(one_data), 
-                        s=5, c='red', alpha=0.5, label=r'$|1\rangle$')
+                        s=0.5, c='red', alpha=0.5, label=r'$|1\rangle$')
         # two data plotted in green
         plt.scatter(np.real(two_data), np.imag(two_data), 
-                        s=5, c='green', alpha=0.5, label=r'$|2\rangle$')
+                        s=0.5, c='green', alpha=0.5, label=r'$|2\rangle$')
 
         # Plot a large dot for the average result of the 0, 1 and 2 states.
         mean_zero = np.mean(zero_data) # takes mean of both real and imaginary parts
