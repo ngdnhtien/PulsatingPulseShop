@@ -1,0 +1,4 @@
+beta, 01234, crknz1cakhw0008ewyqg, kwangyewlee192@gmail.com
+beta, 56789, crkp0kaakhw0008ewywg, kwangyewlee192@gmail.com
+alpha, 01234, crkp3gp14ys0008898m0, kwangyewlee192@gmail.com
+alpha, 56789, crkppwb4r70g0088sr7g, tien.dinhnguyen@u.nus.edu
