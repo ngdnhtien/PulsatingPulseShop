@@ -3,7 +3,6 @@ import numpy as np
 import qiskit
 import matplotlib.pyplot as plt
 
-from constant import *
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.model_selection import train_test_split
 from scipy.optimize import curve_fit
@@ -59,6 +58,7 @@ class DataAnalysis:
         Returns:
             list: IQ_data ?
         """ 
+        scale_factor = 1.0e-7
         experiment_results = self.experiment.result(timeout=120)
         self.IQ_data = []
         for i in range(len(experiment_results.results)):
@@ -66,10 +66,8 @@ class DataAnalysis:
                 self.IQ_data.append(np.real(experiment_results.get_memory(i)[self.qubit] * scale_factor))
             else: 
                 self.IQ_data.append(experiment_results.get_memory(i)[:, self.qubit] * scale_factor)  
-        
-        self.IQ_discrim = [self.IQ_data[0], self.IQ_data[1], self.IQ_data[2]]
 
-    def build_discrim(self):
+    def build_discrim(self, num_states: int):
         """lda _summary_
 
         _extended_summary_
@@ -81,10 +79,11 @@ class DataAnalysis:
         Returns:
             _type_: _description_
         """
+        self.IQ_discrim = [self.IQ_data[0], self.IQ_data[1], self.IQ_data[2]]
         data_reshaped = []
-        for i in range(3):
-            data_reshaped.append(self.reshape_complex_vec(self.IQ_discrim[i]))
 
+        for i in range(num_states):
+            data_reshaped.append(self.reshape_complex_vec(self.IQ_discrim[i]))
         IQ_012_data = list(itertools.chain.from_iterable(data_reshaped))
         state_012 = np.zeros(self.shots)
         state_012 = np.concatenate((state_012, np.ones(self.shots)))
@@ -95,7 +94,7 @@ class DataAnalysis:
         self.lda_012.fit(IQ_012_train, state_012_train)
         self.score_012 = self.lda_012.score(IQ_012_test, state_012_test)
 
-    def count_pop(self):
+    def count_pop(self, num_states: int):
         """countPop _summary_
 
         _extended_summary_
@@ -133,7 +132,7 @@ class DataAnalysis:
         self.raw_counted = raw_final_data
         self.confusion_mat = self.raw_counted[0:3]
 
-    def error_mitiq(self):
+    def error_mitiq(self, num_states):
         """errorMitiq 
         
         This consists of two stages: first is counting; then SPAM error is mitigated
@@ -146,10 +145,12 @@ class DataAnalysis:
         Returns:
             _type_: _description_
         """
+        
         self.mitiq_data = []
         for i in range(len(self.raw_counted)):
             self.mitiq_data.append(data_mitigator(self.raw_counted[i], self.confusion_mat))
         self.mitiq_data = np.array(self.mitiq_data)
+        self.mitiq_data = self.mitiq_data[3:]
 
     def iq_012_plot(self, x_min, x_max, y_min, y_max):
         """iq_012_plot
@@ -222,10 +223,10 @@ def fit_function(x_values, y_values, function, init_params):
     Returns:
         _type_: _description_
     """
-    fitparams, _ = curve_fit(function, x_values, y_values, init_params)
+    fitparams, fitpcov = curve_fit(function, x_values, y_values, init_params)
     y_fit = function(x_values, *fitparams)
 
-    return fitparams, y_fit
+    return fitparams, y_fit, fitpcov
 
 def baseline_remove(values):
     return np.array(values) - np.mean(values)

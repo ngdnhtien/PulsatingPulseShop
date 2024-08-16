@@ -1,6 +1,0 @@
-device: ibm_brisbane
-qubit = 0
-discriminator = 'standard'
-N = 6
-shots = 2048
-description = 'No other corrections were made. Failed since the errors are not amplified quadratically. This means other errors are presented. Need to first address those other errors and then re-run the experiment."
