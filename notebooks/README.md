@@ -1,6 +1,6 @@
 # notebooks/
 
-Eleven notebooks, in reading order. Each one imports `pulseshop` from the folder above and loads the saved data in `data/`; the plots they make go to `figures/generated/`. Cells that would talk to IBM hardware are guarded by `backend = None`.
+Twelve notebooks, in reading order. Each one imports `pulseshop` from the folder above and loads the saved data in `data/`; the plots they make go to `figures/generated/`. Cells that would talk to IBM hardware are guarded by `backend = None`.
 
 | # | notebook | years | what it does |
 |---|---|---|---|
@@ -15,3 +15,4 @@ Eleven notebooks, in reading order. Each one imports `pulseshop` from the folder
 | 09 | `09_coherence_t1_ramsey` | 2024–25 | T1 of |1⟩ and |2⟩, Ramsey fringes, the 1–2 frequency doublet |
 | 10 | `10_transmon_simulation` | 2024–25 | Cooper-pair box, rotating frames, pulse trains, the drive-frame qutrit model |
 | 11 | `11_paper_figures_and_story` | 2025 | the paper's argument, figure gallery, headline numbers, E_J/E_C |
+| 12 | `12_qutrit_rb_2025_and_drape_2026` | 2023, 2025–26 | what the archive folder added: drive strengths λ, AAE/APE/DRAPE reduced data, qutrit RB with corrected vs uncorrected pulses, Lindblad T1 and Ramsey fits, the QOC-group session of 2023 |

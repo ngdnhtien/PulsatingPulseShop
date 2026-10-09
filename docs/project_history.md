@@ -1,4 +1,4 @@
-# Project history, 2022–2025
+# Project history, 2022–2026
 
 How three repositories became this one, what happened when, and what to know before trusting a number.
 
@@ -10,6 +10,7 @@ How three repositories became this one, what happened when, and what to know bef
 | Jul–Aug 2022 | ibmq_manila, ibmq_belem, ibm_oslo q0 | Qiskit-textbook calibrations, 1–2 Rabi, three-state LDA discriminator; SU(3) decomposition, 216 Cliffords, first qutrit Hadamard on ibm_oslo (25–26 Aug) |
 | Aug–Sep 2022 | ibm_oslo, ibmq_manila | Ramsey-like X12 phase-tracking experiments, the "misrotation" over-rotation model |
 | Oct–Nov 2022 | ibmq_manila, ibm_oslo | DRAG sweeps with (Xπ X−π)ⁿ, full Gaussian + DRAG calibration of 0–1 and 1–2 on ibm_oslo (OSLO-B parameters) |
+| Jan–Mar 2023 | ibm_oslo q0 | the "QOC" (quantum optimal control) group: project proposal, journal club, a 0–1 / 1–2 calibration session on 5 Feb 2023 (`data/qoc_2023/`, `docs/qoc_proposal_2023.md`) |
 | Jun–Aug 2023 | ibm_lagos q0 | randomised phase circuits (RPC), randomized benchmarking (p ≈ 0.96–0.98) and interleaved RB of the Hadamard (p = 0.964) |
 | Nov 2023 | ibm_brisbane q0 | readout pulse optimisation (amplitude and frequency sweeps, LDA scores) |
 | Dec 2023 | ibm_brisbane q109 | the "qutritium" workflow (`utility.DataAnalysis`), DRAG v1–v3 of the 96 dt X12, Y-only / Z-only / YZ maps, fine amplitude |
@@ -17,7 +18,15 @@ How three repositories became this one, what happened when, and what to know bef
 | Apr–May 2024 | ibm_brisbane q1, q109 | spectroscopy / Rabi / Ramsey characterisation of q1; Ramsey-v1 frame phases of q109; APE+DRAG of the 64 dt pulse; E_J/E_C figure |
 | Jun–Aug 2024 | ibm_brisbane q109 | pulse-duration study (16–136 dt), rotation-error and APE on the 120 dt pulse; 16 Aug: the repository is pruned ("major update") |
 | Sep 2024 – Feb 2025 | ibm_brisbane q109 | the paper campaign on the 40 dt pulse with Qiskit Runtime: rotation error, APE, DRAPE, phase advance α/β, T1, Ramsey, discriminator; figures 0–2 |
+| Jan 2025 | ibm_brisbane q109 | three more 1–2 Ramsey jobs of 28 Jan (0.1 / 0.5 MHz detuning, 5000 shots) found in the archive |
 | Apr 2025 | — | last commits of `PulsatingPulseShop_pending` (phase advance, 10 Apr 2025) |
+| May 2024 | — | bachelor thesis *Control of a superconducting transmon qutrit* (VNU University of Science), `docs/thesis_2024_…pdf` |
+| 2025 | ibm_brisbane q109 | `unifiedPPS`: the consolidated paper analysis (AAE / APE / DRAPE reduced data, Lindblad fits, paper figures) and a **new qutrit RB run** with uncorrected vs corrected 20 ns pulses: p = 0.9896 → 0.9948, H3 error 1.2 % → 0.34 % (`data/paper_2025/`, notebook 12) |
+| Oct 2025 – Jan 2026 | ibm_brisbane q109 | `qutrit-error`: drive strengths λ₀,₁,₂ from Rabi on 0–1, 1–2, 2–3; five-level simulations of AAE/APE/DRAPE; the closed-form DRAPE and the note *Resolving single-qubit gate amplitude and phase errors in a single experiment* (`data/qutrit_error_2026/`, `docs/drape_paper_notes_2026-01.pdf`) |
+
+## The archive folder (added Oct 2026)
+
+A Google-Drive export `archived/` (1.7 GB) turned up after the merge. Most of it duplicated the three repositories (full copies of `PulsatingPulseShop` and `PulsatingPulseShop_pending` with their data, and four copies of `unifiedPPS`); the non-overlapping part was routed here: `data/paper_2025/`, `data/qutrit_error_2026/`, `data/qoc_2023/`, three Ramsey jobs in `data/pending_2025/`, `figures/unified_2025/`, `figures/qoc_2023/`, seven PDFs in `literature/`, the thesis / proposal / notes in `docs/`, and the original notebooks in `misc/original_notebooks/{unified_2025,qutrit_error_2026,qoc_2023}/`. Notebook 12 walks through it. Two 24 MB copies of the Rabi job `cyb4se57…` were found to be byte-identical to the job folder already here and were reduced to their populations.
 
 ## The three repositories
 
@@ -37,8 +46,9 @@ How three repositories became this one, what happened when, and what to know bef
 4. **`TwoH3.ipynb` counted with the wrong index**, so its three printed results were identical; the experiment shots were never saved. The single-Hadamard counts of 25 Aug 2022 are the only Hadamard data (notebook 05).
 5. **Several raw-data files have no notebook** (later re-runs): the 11–19 Dec 2023 DRAG maps, the 7 Rabi repeats of May 2024, three phase-advance job folders with `params.json` only. They are kept and indexed in `data/README.md`.
 6. **Two conventions coexist** for the heuristic error model `rot_x12(a, p)`: `p` (rotation_script) vs `p/2` (paper/plot); `pulseshop.qutrit` uses `p/2` and says so. The virtual-Z sign convention also flipped between 2022 and 2023 (`Z01(φ) = diag(e^{+iφ},1,1)` vs `diag(e^{-iφ},1,1)`); `pulseshop.qutrit` uses the later one, which is why the 2022 `R01(phi, theta)` equals `R01(theta, phi)` here.
-7. **Missing dependencies in the originals**: `constant.py` (only a `.pyc` at HEAD, source recovered from git), the `account.txt` / `bank.json` credential files (never committed, not needed), the `qiskit.tools.jupyter` / `IBMQ` APIs (Qiskit ≤ 0.45) and `qiskit.pulse` (Qiskit < 2) that the hardware cells require.
+7. **`unifiedPPS` and `qutrit-error` are two generations of the same analysis.** `qutrit-error` (late 2025) renames the data folders (`aae/` → `amplifying_amplitude_error/` …), fits the drive strengths λ instead of setting them by hand (0.54/0.61 → 0.526/0.621/0.753) and adds the DRAG-Y term and the DRAPE closed form; `old_code.ipynb` in it is the May-2025 analysis that produced the reduced `.npz` files from the raw IQ pickles. `fourier_2.ipynb` there equals `unifiedPPS/fourier.ipynb`, and `unifiedPPS/simulation.ipynb` equals `phase_advance.ipynb`.
+8. **Missing dependencies in the originals**: `constant.py` (only a `.pyc` at HEAD, source recovered from git), the `account.txt` / `bank.json` credential files (never committed, not needed), the `qiskit.tools.jupyter` / `IBMQ` APIs (Qiskit ≤ 0.45) and `qiskit.pulse` (Qiskit < 2) that the hardware cells require.
 
 ## Credits
 
-Tien D. Nguyen (Hanoi University of Science / CQT NUS), with the collaborators named in the original notebooks (Linh's Clifford generator, Mingxuan's phase remark, the two IBM accounts of the Ramsey-v1 runs). Coffee shops around Hanoi.
+Tien D. Nguyen (VNU University of Science, Hanoi / CQT NUS), with the collaborators named in the original notebooks (Linh's Clifford generator, Mingxuan's phase remark, the two IBM accounts of the Ramsey-v1 runs). Coffee shops around Hanoi.

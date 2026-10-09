@@ -1,0 +1,7 @@
+Resolving SU(2) unitary errors in a single experiment
+
+1. Conclusion: Resolving SU(2) unitary errors in a single experiment ✅
+2. Actual writing of the paper will help refine what it is about
+3. Introduction (version 1, after writing the Conclusion) ✅
+4. Finalizing the figure: 
+	4.1. Visualizing DRAPE on the Bloch sphere

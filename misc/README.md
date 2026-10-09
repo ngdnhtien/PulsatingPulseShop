@@ -1,12 +1,15 @@
 # misc/
 
-The original material, untouched except that IBM Quantum API tokens were replaced by `<IBM_QUANTUM_TOKEN_REMOVED>` (25 occurrences in 23 notebooks). Nothing here is needed to run the curated notebooks; it is the archive.
+The original material, untouched except that IBM Quantum API tokens were replaced by `<IBM_QUANTUM_TOKEN_REMOVED>` (25 occurrences in 23 notebooks; none were found in the notebooks added from the archive folder). Nothing here is needed to run the curated notebooks; it is the archive.
 
 * `original_notebooks/lab_2022/` — PulsatingPulseLab at its last commit (Nov 2023); `recovered_from_git/` holds the 18 notebooks deleted earlier in its history.
 * `original_notebooks/shop_2023_legacy/` — the 42 notebooks deleted from PulsatingPulseShop on 16 Aug 2024, recovered from git.
 * `original_notebooks/shop_2024/` — PulsatingPulseShop at its last commit (Aug 2024).
 * `original_notebooks/pending_2025/` — PulsatingPulseShop_pending at its last commit (Apr 2025).
-* `original_python/` — `xp01.py`, `xp12.py` (2022), `constant.py`, `function.py` (2023, recovered), `utility.py` + `pulse.py` (2024), `utility.py` (2025), the two original READMEs.
+* `original_notebooks/unified_2025/` — the `unifiedPPS` analysis of 2025 (`paper.ipynb` makes the paper figures from the reduced data; `master_eqn`, `sim`, `transmon_sim`, `fourier`, `phase_advance`, `sensitivity`, `rb_plot`), from the archive folder.
+* `original_notebooks/qutrit_error_2026/` — the DRAPE study of Oct 2025 – Jan 2026 (`extract_lambdas`, `error_amplification`, `simulation`, `fourier`, `fourier_2`, `old_code` = the May-2025 reduction of the raw pickles, `unitary`, `figures`).
+* `original_notebooks/qoc_2023/rough_rabi_12.ipynb` — the 5 Feb 2023 Rabi on ibm_oslo (old `IBMQ` provider); `original_notebooks/pending_2025/ramsey_script_2025-01-28.ipynb` — the Jan-2025 Ramsey script.
+* `original_python/` — `xp01.py`, `xp12.py` (2022), `constant.py`, `function.py` (2023, recovered), `utility.py` + `pulse.py` (2024), `utility.py` (2025), `unified_2025/utility.py` (the 2025 variant), `qoc_2023/{unitary_gate,utility,constant}.py` (Feb 2023), the two original READMEs.
 
 ## Where each original notebook's content went
 
@@ -153,3 +156,21 @@ The original material, untouched except that IBM Quantum API tokens were replace
 | `pending_2025` | `simulation/frame.ipynb` | 10 |
 | `pending_2025` | `simulation/full_transmon.ipynb` | 10 |
 | `pending_2025` | `simulation/pulse_train.ipynb` | 10 |
+
+## Added from the archive folder (Oct 2026)
+
+| era | original notebook | curated notebook(s) that cover it |
+|---|---|---|
+| `unified_2025` | `paper.ipynb` (paper figures 1–6 from the reduced data) | 11, 12 |
+| `unified_2025` | `rb_plot.ipynb` (per-seed RB curves, post-selection, bounded fit) | 12 |
+| `unified_2025` | `master_eqn.ipynb` (Lindblad T1 chain, Ramsey three-frequency fits) | 12 |
+| `unified_2025` | `sim.ipynb`, `transmon_sim.ipynb` (first five-level pulse simulations, gate-based AAE fit) | 10, 12 |
+| `unified_2025` | `fourier.ipynb` (FFT of DRAG pulses, E_J/E_C, charge dispersion, leakage toy) | 10, 11 |
+| `unified_2025` | `phase_advance.ipynb` = `simulation.ipynb` (phase-advance note simulation) | 08 |
+| `unified_2025` | `sensitivity.ipynb` (two-level AAE toy) | 12 |
+| `qutrit_error_2026` | `extract_lambdas.ipynb` | 12 |
+| `qutrit_error_2026` | `error_amplification.ipynb`, `simulation.ipynb` (DRAPE closed form, ε/β₀/ξ extraction) | 12 |
+| `qutrit_error_2026` | `old_code.ipynb` (raw pickles → reduced npz, May 2025) | 04, 12 |
+| `qutrit_error_2026` | `fourier.ipynb`, `fourier_2.ipynb`, `unitary.ipynb`, `figures.ipynb` | — (scratch) |
+| `qoc_2023` | `rough_rabi_12.ipynb` | 12 |
+| `pending_2025` | `ramsey_script_2025-01-28.ipynb` | 09, 12 |

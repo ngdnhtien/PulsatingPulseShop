@@ -90,6 +90,48 @@ def rb_error_per_clifford(p, d=3):
     return (1 - p) * (d - 1) / d
 
 
+def rb_process_infidelity(p, d=3):
+    """Process (entanglement) infidelity  e_F = (1 - p)(1 - 1/d^2), the measure used in the 2025 RB analysis."""
+    return (1 - p) * (1 - 1 / d ** 2)
+
+
+def interleaved_gate_error(p_interleaved, p_reference, d=3):
+    """Error of the interleaved gate  e_gate = (1 - 1/d^2)(1 - p_i/p)  (Magesan 2012; qutrit d = 3)."""
+    return (1 - 1 / d ** 2) * (1 - p_interleaved / p_reference)
+
+
+def expect_z_qutrit(p0, p1, p2):
+    """<Z> = p0 + w p1 + w^2 p2 with w = e^{2 pi i/3}; its real part is the RB observable of 2025."""
+    w = np.exp(2j * np.pi / 3)
+    return p0 + w * p1 + w ** 2 * p2
+
+
+def rb_decay_bounded(m, y, p0=(1.0, 0.9, 0.0)):
+    """
+    Least-squares fit of A p^m + B to y with 0 <= A, p <= 1, A + B <= 1 (the constrained fit of rb_plot.ipynb,
+    2025).  Returns (A, p, B) and the standard deviation of p from the numerical Hessian.
+    """
+    from scipy.optimize import minimize
+    m = np.asarray(m, float); y = np.asarray(y, float)
+    loss = lambda x: np.sum((rb_decay(m, x[0], x[2], x[1]) - y) ** 2)
+    res = minimize(loss, p0, bounds=[(0, 1), (0, 1), (-1, 1)],
+                   constraints=[{"type": "ineq", "fun": lambda x: 1 - (x[0] + x[2])}])
+    A, p, B = res.x
+    eps = np.sqrt(np.finfo(float).eps); n = 3; H = np.zeros((n, n))
+    for i in range(n):
+        for j in range(n):
+            x = [res.x.copy() for _ in range(4)]
+            x[0][i] += eps; x[0][j] += eps; x[1][i] += eps; x[1][j] -= eps
+            x[2][i] -= eps; x[2][j] += eps; x[3][i] -= eps; x[3][j] -= eps
+            H[i, j] = (loss(x[0]) - loss(x[1]) - loss(x[2]) + loss(x[3])) / (4 * eps ** 2)
+    try:
+        cov = np.linalg.inv(H) * np.sum((y - rb_decay(m, A, B, p)) ** 2) / max(len(m) - n, 1)
+        p_std = float(np.sqrt(abs(cov[1, 1])))
+    except np.linalg.LinAlgError:
+        p_std = float("nan")
+    return (A, p, B), p_std
+
+
 def population_theory(n, eps):
     """
     Ground population after n repeated pi pulses with over-rotation eps:

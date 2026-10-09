@@ -1,0 +1,19 @@
+{
+ "backend": "ibm_brisbane",
+ "qubit": 109,
+ "job_id_string": "cycdm20cw2k0008kky2g",
+ "datetime": "2025-01-28T15:02:39.662612",
+ "duration": 40,
+ "amp": 0.23636363636363633,
+ "detuning_MHz": 0.1,
+ "start_delay": 800.0,
+ "end_delay": 1600.0,
+ "granularity": 8,
+ "ramsey_shots": 5000,
+ "delay_overlap": false,
+ "mapping_01": true,
+ "rep_delay": 0.0005,
+ "extended_delay": 0,
+ "idling_circuits": false,
+ "unconditional_reset12": true
+}

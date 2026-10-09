@@ -103,7 +103,25 @@ PARAMS = {
         x12=dict(shape="drag", duration=40, sigma=10, amp=0.4797979797979798, beta=0),
         confusion_matrix=[[0.9771, 0.0184, 0.0045], [0.0188, 0.889, 0.0922], [0.0218, 0.1629, 0.8153]],
         T1_us=90.24),
+    "brisbane_q109_2025-01": dict(device="ibm_brisbane", qubit=109, note="sx12_params.json as used by the Jan-2025 Ramsey script (archived/ramsey)",
+        f12=4677855926.141399,
+        sx12=dict(shape="gaussian", duration=40, sigma=10, amp=0.23636363636363633, beta=0),
+        reset12=dict(shape="gaussian", duration=40, sigma=10, amp=0.48384)),
+    "brisbane_q109_2025-10_rough": dict(device="ibm_brisbane", qubit=109, note="rough-Rabi pi/2_12 pulse before any correction (qutrit_error_2026)",
+        sx12=dict(shape="gaussian", duration=40, sigma=10, amp=0.2512, beta=0),
+        sx12_scaled=dict(shape="drag", duration=40, sigma=10, amp=0.2365, beta=0.2089,
+                         note="amp/(1 + 2 eps/pi) with eps = 0.0977; beta = 0.403/(2 pi 0.3071) in units of 1/GHz")),
+    # ---- 2023, QOC-group era (ibm_oslo), between the Lab and the Shop ----
+    "oslo_q0_2023-02": dict(device="ibm_oslo", qubit=0, note="qoc_archive, 5 Feb 2023: zo.json / ot.json",
+        x01=dict(shape="drag", duration=160, sigma=40, amp=0.17300039603239967, beta=0.21469611947135928),
+        sx01=dict(shape="drag", duration=160, sigma=40, amp=0.08712462224930756, beta=0.21469611947135928),
+        x12=dict(shape="gaussian", duration=208, sigma=52, amp=0.10702239483390295, beta=0)),
 }
+
+#: relative drive strengths lambda_j of the transitions j <-> j+1 of ibm_brisbane q109 (|0-1>, |1-2>, |2-3>),
+#: fitted on Rabi oscillations in qutrit_error_2026/extract_lambdas.ipynb (Oct 2025); they convert a Qiskit
+#: amplitude [a.u.] into a Rabi rate, H_j = (lambda_j / 2) Omega(t) |j+1><j| + h.c.
+LAMBDAS_BRISBANE_Q109 = (0.526, 0.621, 0.753)
 
 
 def ej_over_ec(f01_hz, f12_hz):

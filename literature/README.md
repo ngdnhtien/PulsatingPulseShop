@@ -1,6 +1,6 @@
 # literature/
 
-The 32 papers that were kept in the shop's `paper/` folder (deleted from the repository in Aug 2024, recovered from git history). Files are renamed `Author Year _ short title.pdf`; the original file names are listed for reference. `references.bib` has one BibTeX key per paper.
+The 32 papers that were kept in the shop's `paper/` folder (deleted from the repository in Aug 2024, recovered from git history), plus 7 from the 2023 QOC-group reading list found in the archive folder. Files are renamed `Author Year _ short title.pdf`; the original file names are listed for reference. `references.bib` has one BibTeX key per paper.
 
 ## The device
 
@@ -44,6 +44,13 @@ The 32 papers that were kept in the shop's `paper/` folder (deleted from the rep
 - **`liu2023`** -- Liu et al., Performing SU(d) operations and rudimentary algorithms in a superconducting transmon qudit for d = 3 and d = 4, Phys. Rev. X 13, 021028 (2023). *SU(3)/SU(4) control and decompositions (E_J/E_C comparison).*  (`pdf/Liu2023_SUd_operations_transmon_qudit_d3_d4.pdf`, was `qudit_chinese.pdf`)
 - **`campbell2012`** -- Campbell, Anwar, Browne, Magic-state distillation in all prime dimensions using quantum Reed-Muller codes, Phys. Rev. X 2, 041021 (2012). *why qutrits are interesting for fault tolerance.*  (`pdf/Campbell2012_magic_state_distillation_prime_dimensions.pdf`, was `qutrit_magic_state.pdf`)
 - **`nguyen2023`** -- H. C. Nguyen, B. G. Bach, T. D. Nguyen, D. M. Tran, D. V. Nguyen, H. Q. Nguyen, Simulating neutrino oscillations on a superconducting qutrit, Phys. Rev. D 108, 023013 (2023). *our own group's qutrit experiment on IBM hardware (the author of this repository is a co-author).*  (`pdf/Nguyen2023_simulating_neutrino_oscillations_qutrit.pdf`, was `qutrit_neutrino.pdf`)
+
+## Optimal control and qudit RB (the 2023 QOC-group reading list)
+
+- **`abdelhafez2019`** -- Abdelhafez et al., Universal gates for protected superconducting qubits using optimal control, Phys. Rev. A 101, 022321 (2020), arXiv:1908.07637. *GRAPE-style optimal control of superconducting qubits; the "QOC" in the group's name.*  (`pdf/Abdelhafez2019_universal_gates_protected_qubits_optimal_control.pdf`, was `qoc_archive/papers/optimal-control/1908.07637.pdf`)
+- **`wittler2021`** -- Wittler et al., Integrated tool set for control, calibration, and characterization of quantum devices applied to superconducting qubits (C3), Phys. Rev. Applied 15, 034080 (2021). *model-based calibration; both the arXiv (2009.09866) and journal versions.*  (`pdf/Wittler2021_c3_integrated_toolset_control_calibration_PRApplied.pdf`, `…_arxiv.pdf`)
+- **`jafarzadeh2020`** -- Jafarzadeh, Wu, Sanders, Feng, Randomized benchmarking for qudit Clifford gates, New J. Phys. 22, 063014 (2020). *RB theory for d-level Cliffords.*  (`pdf/Jafarzadeh2020_randomized_benchmarking_qudit_clifford_gates.pdf`)
+- **`morvan2021prl`**, **`blok2021prx`**, **`lucero2008prl`** -- the journal versions of three papers already listed above (the earlier copies are the arXiv versions).  (`pdf/Morvan2021_qutrit_randomized_benchmarking_PRL.pdf`, `pdf/Blok2021_information_scrambling_qutrit_processor_PRX.pdf`, `pdf/Lucero2008_high_fidelity_gates_josephson_qubit_PRL.pdf`)
 
 ## Qudits in general
 
