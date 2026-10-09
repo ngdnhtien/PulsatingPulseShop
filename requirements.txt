@@ -1,0 +1,13 @@
+# analysis and simulation (everything in notebooks/ runs with these)
+numpy
+scipy
+matplotlib
+scikit-learn
+qutip>=5
+cvxopt
+sympy
+jupyter
+
+# only for talking to IBM hardware (pulseshop.schedules); qiskit.pulse was removed in Qiskit 2.0
+# qiskit>=1.3,<2
+# qiskit-ibm-runtime<0.40

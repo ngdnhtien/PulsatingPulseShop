@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pulseshop"
+version = "1.0.0"
+description = "PPS quantum mechanic shop: pulse-level control of IBM transmon qutrits (2022-2025)"
+authors = [{name = "Tien D. Nguyen"}]
+license = {text = "MIT"}
+requires-python = ">=3.9"
+dependencies = ["numpy", "scipy", "matplotlib", "scikit-learn", "qutip", "cvxopt", "sympy"]
+
+[tool.setuptools]
+packages = ["pulseshop"]
